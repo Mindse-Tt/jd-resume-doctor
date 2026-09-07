@@ -15,6 +15,8 @@
   [没做过]         3年以上 Android 开发经验，精通 Kotlin/Java
 ```
 
+![架构图](docs/architecture.png)
+
 ## 装
 
 ```bash

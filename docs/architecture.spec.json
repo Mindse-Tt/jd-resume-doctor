@@ -1,0 +1,181 @@
+{
+  "size": [
+    1600
+  ],
+  "theme": "paper",
+  "title": "这份简历投这个岗位，到底卡在哪一条",
+  "subtitle": "JD-Resume Doctor：规则先算，模型再判，程序把关",
+  "accent": "orange",
+  "padding": 72,
+  "reserveRight": 360,
+  "gapX": 46,
+  "gapY": 58,
+  "rows": [
+    {
+      "width": 0.5,
+      "gapAfter": 64,
+      "nodes": [
+        {
+          "id": "in",
+          "label": "简历 + JD",
+          "sub": "docx / pdf / md，本地读取",
+          "shape": "pill",
+          "accent": "ink"
+        }
+      ]
+    },
+    {
+      "width": 0.5,
+      "gapAfter": 64,
+      "nodes": [
+        {
+          "id": "atom",
+          "label": "拆成原子",
+          "sub": "需求原子 × 证据原子，可逐条比对"
+        }
+      ]
+    },
+    {
+      "width": 0.5,
+      "gapAfter": 64,
+      "nodes": [
+        {
+          "id": "cover",
+          "label": "覆盖判定 L0–L3",
+          "sub": "判 L1 以上必须引用简历原文",
+          "accent": "blue",
+          "emphasis": true
+        }
+      ]
+    },
+    {
+      "width": 0.5,
+      "gapAfter": 70,
+      "nodes": [
+        {
+          "id": "gap",
+          "label": "缺口分三类",
+          "sub": "没做过 · 做过但没写 · 写了但看不出来",
+          "accent": "orange",
+          "emphasis": true
+        }
+      ]
+    },
+    {
+      "width": 0.5,
+      "gapAfter": 64,
+      "nodes": [
+        {
+          "id": "write",
+          "label": "逐句改写与追问",
+          "sub": "改表达 / 调顺序 / 留占位符"
+        }
+      ]
+    },
+    {
+      "width": 0.5,
+      "gapAfter": 64,
+      "nodes": [
+        {
+          "id": "guard",
+          "label": "FactGuard 校验",
+          "sub": "数字必须能在台账里找到",
+          "accent": "red",
+          "emphasis": true
+        }
+      ]
+    },
+    {
+      "width": 0.5,
+      "nodes": [
+        {
+          "id": "out",
+          "label": "诊断报告",
+          "sub": "匹配度 + 卡点清单 + 可替换改写",
+          "shape": "pill",
+          "accent": "ink"
+        }
+      ]
+    }
+  ],
+  "free": [
+    {
+      "id": "model",
+      "label": "岗位能力模型",
+      "sub": "好简历的正向定义，十个维度",
+      "shape": "cylinder",
+      "x": 1150,
+      "y": 330,
+      "w": 300,
+      "h": 132
+    },
+    {
+      "id": "ledger",
+      "label": "事实台账",
+      "sub": "简历里出现过的每个数字",
+      "shape": "cylinder",
+      "x": 1150,
+      "y": 720,
+      "w": 300,
+      "h": 132
+    }
+  ],
+  "edges": [
+    {
+      "from": "in",
+      "to": "atom",
+      "sides": "bt"
+    },
+    {
+      "from": "atom",
+      "to": "cover",
+      "sides": "bt"
+    },
+    {
+      "from": "cover",
+      "to": "gap",
+      "sides": "bt"
+    },
+    {
+      "from": "gap",
+      "to": "write",
+      "sides": "bt"
+    },
+    {
+      "from": "write",
+      "to": "guard",
+      "sides": "bt"
+    },
+    {
+      "from": "guard",
+      "to": "out",
+      "sides": "bt",
+      "label": "通过"
+    },
+    {
+      "from": "model",
+      "to": "cover",
+      "sides": "lr",
+      "style": "dash",
+      "thin": true
+    },
+    {
+      "from": "ledger",
+      "to": "guard",
+      "sides": "lr",
+      "style": "dash",
+      "thin": true
+    },
+    {
+      "from": "guard",
+      "to": "write",
+      "route": "elbow",
+      "sides": "ll",
+      "offset": 96,
+      "style": "dash",
+      "accent": "red",
+      "label": "凭空出现的数字 → 降级为待确认"
+    }
+  ],
+  "footer": "github.com/Mindse-Tt/jd-resume-doctor"
+}
