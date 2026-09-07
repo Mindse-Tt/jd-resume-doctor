@@ -1,0 +1,14 @@
+# 运行产物：含真实简历与诊断报告，绝不入库
+runs/
+dist/
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# 系统
+.DS_Store

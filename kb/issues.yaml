@@ -1,0 +1,195 @@
+# 简历问题知识库。教练可直接改这个文件，不用碰代码。
+# detect 为 rule 的条目由 core/rules.py 里同名函数实现；llm 的交给 Skill 语义层。
+# xhs_hook 是小红书选题钩子——每条规则天然是一篇笔记。
+
+- id: AUTH-01
+  category: '真实性'
+  severity: fatal
+  title: '数字不合常理'
+  detect: rule
+  interviewer_view: '超过 10 倍的提升几乎不可能是真实业务数字，面试官第一反应是"这人不懂什么叫指标"，且会连坐怀疑全篇数据。'
+  fix_hint: '换成绝对量 + 质量约束 + 人力折算。例如"效率提升 1000%"→"单条生产周期 40 分钟→4 分钟，抽检通过率 92%，释放 3 人日/周"。'
+  xhs_hook: '简历上写"效率提升1000%"，我一眼就知道你没做过'
+
+- id: AUTH-02
+  category: '真实性'
+  severity: important
+  title: '强动词无支撑'
+  detect: rule
+  interviewer_view: '写了"主导/从0到1"却看不到方法和结果，面试官必然追问"具体你做了什么"，答不上就是虚报角色。'
+  fix_hint: '强动词后面必须跟"怎么做的"（方法）和"做成什么样"（结果），缺一个就降级用词。'
+  xhs_hook: '"主导"这两个字，90%的人没资格写'
+
+- id: AUTH-04
+  category: '真实性'
+  severity: fatal
+  title: '时间线冲突'
+  detect: rule
+  interviewer_view: '两段经历时间重叠或跨度异常，背调会直接暴露，属于诚信问题。'
+  fix_hint: '核对真实起止时间；确有重叠（如交接期）要准备一句话解释。'
+
+- id: AUTH-06
+  category: '真实性'
+  severity: important
+  title: '指标无口径'
+  detect: rule
+  interviewer_view: '只有"提升30%"没有基线、样本量、统计口径，追问第一个数字答不上，后面所有数字一起作废。'
+  fix_hint: '补三件套——指标定义、评测集规模/数据来源、你贡献的部分。写不出就先降级为定性描述。'
+  xhs_hook: '你简历上那11个百分比，面试官只会问一个'
+
+- id: AUTH-08
+  category: '真实性'
+  severity: suggestion
+  title: '技能自评虚高'
+  detect: rule
+  interviewer_view: '写"精通"但项目里找不到对应应用，笔试或机考会现原形。'
+  fix_hint: '把"精通/熟练掌握"换成具体做过什么，让证据自己说话。'
+
+- id: QUANT-01
+  category: '量化'
+  severity: important
+  title: '成果句无任何数字'
+  detect: rule
+  interviewer_view: 'HR 无法判断量级，会默认按最小可能理解；或认为你结果不好所以不敢写。'
+  fix_hint: '补上影响的用户数/收入/时间成本，哪怕只给量级。'
+
+- id: QUANT-03
+  category: '量化'
+  severity: suggestion
+  title: '只有相对值没有基数'
+  detect: rule
+  interviewer_view: '"提升200%"可能是 1→3。没有基数的百分比等于没说。'
+  fix_hint: '相对值后面补绝对量，或直接写 X→Y。'
+  xhs_hook: '提升200%和从1涨到3，是同一件事'
+
+- id: QUANT-04
+  category: '量化'
+  severity: important
+  title: '量化的是过程不是结果'
+  detect: rule
+  interviewer_view: '"输出 PRD 50+"是苦劳指标。PM 的价值不由文档数量衡量。'
+  fix_hint: '换成这些文档带来的业务结果，或删掉。'
+  xhs_hook: '写"输出PRD 50+"的人，都误解了产品经理'
+
+- id: QUANT-05
+  category: '量化'
+  severity: important
+  title: '全篇量化密度过低'
+  detect: rule
+  interviewer_view: '通篇没有数字，读完不知道你做成过什么。'
+  fix_hint: '挑 4-5 段最硬的补上带口径的数字，其余保持定性即可。'
+
+- id: ATTR-01
+  category: '归因'
+  severity: important
+  title: '未说明个人角色'
+  detect: rule
+  interviewer_view: '看不出是主导还是打杂，面试官会按最低估计。'
+  fix_hint: '明确写"独立负责/主导/参与其中的 X 部分"，并说清团队规模。'
+
+- id: ATTR-03
+  category: '归因'
+  severity: important
+  title: '缺方法（只有做了什么和结果）'
+  detect: rule
+  interviewer_view: '只有 What 和 How much，没有 Why 和 How。面试官只关心后者。'
+  fix_hint: '每条补一句"为什么这么设计"或"用了什么方法"，这是实习生和能带方向的人的分界线。'
+  xhs_hook: '面试官不问你做了什么，只问你为什么这么做'
+
+- id: TERM-03
+  category: '表达'
+  severity: suggestion
+  title: '大词空词'
+  detect: rule
+  interviewer_view: '"赋能""抓手""闭环"没有实指，读者只会觉得你在凑字。'
+  fix_hint: '每个大词换成它到底指哪个具体动作。'
+
+- id: TERM-04
+  category: '表达'
+  severity: suggestion
+  title: 'AI 味/模板腔'
+  detect: rule
+  interviewer_view: '这种句子在每份简历里都出现，等于没写，还暴露是套模板。'
+  fix_hint: '删掉，或换成只有你这段经历才写得出的具体细节。'
+
+- id: TERM-05
+  category: '表达'
+  severity: important
+  title: '职责陈述而非成果陈述'
+  detect: rule
+  interviewer_view: '通篇"负责XX"是岗位说明书，不是简历。'
+  fix_hint: '把"负责 X"改成"做了 X，用了 Y 方法，达成 Z"。'
+
+- id: STRUCT-03
+  category: '结构'
+  severity: suggestion
+  title: '单段要点过多'
+  detect: rule
+  interviewer_view: '一段超过 6 条，重点被淹没，面试官的注意力只够看前 3 条。'
+  fix_hint: '合并同类项，砍到 4 条以内，最强的放第一条。'
+
+- id: STRUCT-05
+  category: '结构'
+  severity: important
+  title: '长度不当'
+  detect: rule
+  interviewer_view: '应届超过一页，面试官会认为你抓不住重点。'
+  fix_hint: '砍掉与目标岗位无关的模块，而不是缩字号。'
+
+- id: LANG-03
+  category: '语言'
+  severity: suggestion
+  title: '长句无断句'
+  detect: rule
+  interviewer_view: '一口气 60 字以上读不下去，面试官会跳过。'
+  fix_hint: '按"背景—动作—方法—结果"拆成分号短句。'
+
+- id: META-01
+  category: '信息'
+  severity: important
+  title: '联系方式缺失或不专业'
+  detect: rule
+  interviewer_view: '没有手机或邮箱，HR 找不到你；QQ 邮箱和昵称邮箱会减分。'
+  fix_hint: '手机 + 一个正式邮箱（姓名拼音）。'
+
+- id: META-02
+  category: '信息'
+  severity: important
+  title: '隐私过度暴露'
+  detect: rule
+  interviewer_view: '身份证号、详细住址、婚育状况不该出现在简历上，属于无谓的信息泄露。'
+  fix_hint: '删除。'
+
+- id: FIT-01
+  category: '与JD错位'
+  severity: fatal
+  title: '硬性门槛未满足'
+  detect: align
+  interviewer_view: '简历层面直接过不了筛，其他都白改。'
+  fix_hint: '若实际满足只是没写清，立刻补上；若确实不满足，换岗位。'
+
+- id: FIT-02
+  category: '与JD错位'
+  severity: important
+  title: '核心职责无证据'
+  detect: align
+  interviewer_view: 'JD 要的核心能力在简历里找不到任何对应经历。'
+  fix_hint: '先判断是"没做过"还是"做过但没写"——后者立刻可补。'
+
+- id: FIT-03
+  category: '与JD错位'
+  severity: important
+  title: '关键词字面缺失'
+  detect: align
+  interviewer_view: 'ATS 按关键词过滤，JD 写"用户增长"你写"拉新"，机器匹配不上。'
+  fix_hint: '在不改变事实的前提下，把同义表述换成 JD 的原词。'
+  xhs_hook: '你不是不够格，是ATS没读懂你'
+
+- id: FIT-06
+  category: '与JD错位'
+  severity: important
+  title: '隐藏信号未回应'
+  detect: align
+  interviewer_view: 'JD 写"策略产品"，隐含要的是指标体系、AB 实验、badcase 归因，你一条都没提。'
+  fix_hint: '按隐藏信号表逐条自查，做过的补上，没做过的知道面试会问。'
+  xhs_hook: 'JD里没写但一定会考的东西'

@@ -1,0 +1,31 @@
+# JD 触发词 -> 隐含能力要求 -> 简历上应有的证据形态
+- trigger: [策略产品, 策略迭代, 策略设计]
+  implies: 指标体系设计 / AB实验 / 与算法协作 / badcase归因
+  evidence_hint: ["定义了.*指标", "AB|A/B|实验", "算法", "归因", "口径"]
+- trigger: [0-1, 0到1, 从零, 从0, 冷启动]
+  implies: 需求定义 / MVP取舍 / 跨部门推动
+  evidence_hint: ["MVP", "取舍|裁剪|收敛", "上线", "种子"]
+- trigger: [增长, 拉新, 促活, 留存, 用户增长]
+  implies: 漏斗拆解 / 留存曲线 / 渠道ROI
+  evidence_hint: ["漏斗", "留存", "ROI|CAC", "分层"]
+- trigger: [中台, 平台化, 通用能力]
+  implies: 能力抽象 / 多业务方收敛 / SLA
+  evidence_hint: ["业务方", "复用", "接入", "SLA|稳定性"]
+- trigger: [数据驱动, 数据敏感, 数据分析]
+  implies: SQL/看板自建 / 指标定义 / 异常归因
+  evidence_hint: ["SQL", "看板", "指标", "异动|归因"]
+- trigger: [大模型, LLM, AIGC, AI应用, Agent, RAG]
+  implies: Prompt工程 / 评测集设计 / 成本与延迟权衡 / 幻觉治理
+  evidence_hint: ["prompt|提示词", "评测|评估", "延迟|时延|P95", "成本|token", "幻觉|badcase"]
+- trigger: [游戏, 玩家]
+  implies: 数值感 / 玩家分层 / 体验与商业化平衡
+  evidence_hint: ["留存", "付费|付费率", "时长", "分层|段位"]
+- trigger: [推荐, 搜索, 召回, 排序]
+  implies: 召回排序链路理解 / 指标口径 / 冷启动
+  evidence_hint: ["召回", "排序|rerank|重排", "CTR|CVR", "冷启"]
+- trigger: [商业化, 广告, 变现]
+  implies: 出价/计费理解 / ROI / 供需平衡
+  evidence_hint: ["ROI|ROAS", "出价|竞价", "eCPM|填充"]
+- trigger: [海外, 国际化, 跨境, 出海]
+  implies: 本地化 / 时差协作 / 合规
+  evidence_hint: ["本地化", "多语言|地区", "合规"]
